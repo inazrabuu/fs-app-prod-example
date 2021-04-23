@@ -1,0 +1,17 @@
+language: generic
+sudo: required
+services:
+  - docker
+
+before_install:
+  - docker build -t inazrabuu/fs-client-app-prod-example -f ./client/Dockerfile.dev ./client
+
+script:
+  - docker run -e CI=true inazrabuu/fs-client-app-prod-example npm run test
+
+after_success:
+  - docker build -t inazrabuu/fs-client-app-prod-example ./client
+  - docker build -t inazrabuu/fs-server-app-prod-example ./server
+  - docker build -t inazrabuu/fs-worker-app-prod-example ./worker
+  - docker build -t inazrabuu/fs-nginx-app-prod-example ./nginx
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
