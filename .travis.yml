@@ -15,3 +15,7 @@ after_success:
   - docker build -t inazrabuu/fs-worker-app-prod-example ./worker
   - docker build -t inazrabuu/fs-nginx-app-prod-example ./nginx
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
+  - docker push inazrabuu/fs-client-app-prod-example
+  - docker push inazrabuu/fs-server-app-prod-example
+  - docker push inazrabuu/fs-worker-app-prod-example
+  - docker push inazrabuu/fs-nginx-app-prod-example
