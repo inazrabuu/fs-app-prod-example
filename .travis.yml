@@ -25,7 +25,7 @@ deploy:
   region: "us-west-1"
   app: "fs-app-prod"
   env: "Fsappprod-env"
-  bucket_name: "elasticbeanstalk-ap-southeast-1-887785090245"
+  bucket_name: "elasticbeanstalk-us-west-1-887785090245"
   bucket_path: "fs-app-prod"
   on:
     branch: "main"
