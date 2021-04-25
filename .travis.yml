@@ -22,7 +22,7 @@ after_success:
 
 deploy:
   provider: elasticbeanstalk
-  region: "ap-southeast-1"
+  region: "us-west-1"
   app: "fs-app-prod"
   env: "Fsappprod-env"
   bucket_name: "elasticbeanstalk-ap-southeast-1-887785090245"
