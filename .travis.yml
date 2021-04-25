@@ -19,3 +19,15 @@ after_success:
   - docker push inazrabuu/fs-server-app-prod-example
   - docker push inazrabuu/fs-worker-app-prod-example
   - docker push inazrabuu/fs-nginx-app-prod-example
+
+deploy:
+  provider: elasticbeanstalk
+  region: "ap-southeast-1"
+  app: "fs-app-prod"
+  env: "Fsappprod-env"
+  bucket_name: "elasticbeanstalk-ap-southeast-1-887785090245"
+  bucket_path: "fs-app-prod"
+  on:
+    branch: "main"
+  access_key_id: "$AWS_ACCESS_KEY"
+  secret_access_key: "$AWS_SECRET_KEY"
