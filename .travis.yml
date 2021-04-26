@@ -12,22 +12,22 @@ script:
 after_success:
   - docker build -t inazrabuu/fs-client-app-prod-example ./client
   - docker build -t inazrabuu/fs-server-app-prod-example ./server
-  - docker build -t inazrabuu/fs-worker-app-prod-example ./worker
   - docker build -t inazrabuu/fs-nginx-app-prod-example ./nginx
+  - docker build -t inazrabuu/fs-worker-app-prod-example ./worker
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
   - docker push inazrabuu/fs-client-app-prod-example
+  - docker push inazrabuu/fs-nginx-app-prod-example
   - docker push inazrabuu/fs-server-app-prod-example
   - docker push inazrabuu/fs-worker-app-prod-example
-  - docker push inazrabuu/fs-nginx-app-prod-example
 
 deploy:
   provider: elasticbeanstalk
-  region: "ap-southeast-1"
-  app: "fs-app-prod-1"
-  env: "Fsappprod1-env"
-  bucket_name: "elasticbeanstalk-ap-southeast-1-887785090245"
-  bucket_path: "fs-app-prod-1"
+  region: ap-southeast-1
+  app: fs-app-prod-1
+  env: Fsappprod1-env
+  bucket_name: elasticbeanstalk-ap-southeast-1-887785090245
+  bucket_path: fs-app-prod-1
   on:
-    branch: "main"
+    branch: main
   access_key_id: "$AWS_ACCESS_KEY"
   secret_access_key: "$AWS_SECRET_KEY"
