@@ -25,7 +25,7 @@
     {
       "name": "nginx",
       "image": "inazrabuu/fs-nginx-app-prod-example",
-      "hostname": "client",
+      "hostname": "nginx",
       "essential": true,
       "portMappings": [
         {
